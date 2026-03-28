@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICML 2026 Rebuttal Figures</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f2ec;
+      --surface: #fffef9;
+      --border: #d9d3c7;
+      --text: #1a1812;
+      --muted: #7a7060;
+      --accent: #2d5a3d;
+      --accent-light: #e8f0ea;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .figure-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s;
+    }
+
+    .figure-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .card-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    /* PNG / image display */
+    .img-viewer img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* PDF embed */
+    .pdf-viewer embed,
+    .pdf-viewer iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .pdf-fallback {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+    }
+
+    .pdf-fallback a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* SVG embed */
+    .svg-viewer img,
+    .svg-viewer object {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">ICML 2026 · Rebuttal Materials</div>
+  <h1>Figures &amp; Supplementary</h1>
+</header>
+
+<main>
+
+  <!-- Figure 1: PNG -->
+  <div class="figure-card">
+    <div class="card-header">
+      <span class="card-title">1.png</span>
+      <span class="badge">PNG</span>
+    </div>
+    <div class="card-body img-viewer">
+      <img src="1.png" alt="Figure 1" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="pdf-fallback" style="display:none">
+        <p>Image failed to load.</p>
+        <a href="1.png" download>Download 1.png</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- tau_sensitivity: PDF -->
+  <div class="figure-card">
+    <div class="card-header">
+      <span class="card-title">tau_sensitivity.pdf</span>
+      <span class="badge">PDF</span>
+    </div>
+    <div class="card-body pdf-viewer">
+      <embed src="tau_sensitivity.pdf" type="application/pdf"
+             onerror="this.style.display='none';document.getElementById('pdf-fallback').style.display='block'">
+      <div id="pdf-fallback" class="pdf-fallback">
+        <p>Your browser cannot preview this PDF inline.</p>
+        <a href="tau_sensitivity.pdf" target="_blank">Open PDF ↗</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  ICML 2026 Rebuttal · Hosted via GitHub Pages
+</footer>
+
+</body>
+</html>
