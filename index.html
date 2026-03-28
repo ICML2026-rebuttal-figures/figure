@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg: #f5f2ec;
       --surface: #fffef9;
@@ -18,24 +17,17 @@
       --accent-light: #e8f0ea;
       --shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
-      padding: 0;
     }
-
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       padding: 2.5rem 3rem;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
-
     header .label {
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
@@ -44,14 +36,11 @@
       color: var(--accent);
       margin-bottom: 0.4rem;
     }
-
     header h1 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.6rem;
       font-weight: 400;
-      color: var(--text);
     }
-
     main {
       max-width: 960px;
       margin: 0 auto;
@@ -60,7 +49,13 @@
       flex-direction: column;
       gap: 2rem;
     }
-
+    .status {
+      text-align: center;
+      padding: 3rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
     .figure-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -69,11 +64,7 @@
       box-shadow: var(--shadow);
       transition: box-shadow 0.2s;
     }
-
-    .figure-card:hover {
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-    }
-
+    .figure-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
     .card-header {
       display: flex;
       align-items: center;
@@ -82,18 +73,12 @@
       border-bottom: 1px solid var(--border);
       background: var(--bg);
     }
-
     .card-title {
       font-family: 'DM Mono', monospace;
       font-size: 0.82rem;
       color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
-
     .badge {
-      display: inline-block;
       padding: 0.15rem 0.5rem;
       border-radius: 3px;
       font-size: 0.65rem;
@@ -104,57 +89,44 @@
       color: var(--accent);
       font-family: 'DM Mono', monospace;
     }
-
-    .card-body {
-      padding: 1.5rem;
-    }
-
-    /* PNG / image display */
+    .card-body { padding: 1.5rem; }
     .img-viewer img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 4px;
     }
-
-    /* PDF embed */
-    .pdf-viewer embed,
-    .pdf-viewer iframe {
+    .pdf-viewer embed {
       width: 100%;
-      height: 600px;
+      height: 620px;
       border: none;
       border-radius: 4px;
       display: block;
     }
-
-    .pdf-fallback {
-      display: none;
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--muted);
-    }
-
-    .pdf-fallback a {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.4rem;
-      background: var(--accent);
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-family: 'DM Mono', monospace;
-    }
-
-    /* SVG embed */
-    .svg-viewer img,
-    .svg-viewer object {
+    .svg-viewer img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 4px;
+      background: white;
     }
-
+    .fallback {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .fallback a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.55rem 1.3rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-family: 'DM Mono', monospace;
+    }
     footer {
       text-align: center;
       padding: 2rem;
@@ -162,7 +134,7 @@
       font-size: 0.7rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -173,44 +145,92 @@
   <h1>Figures &amp; Supplementary</h1>
 </header>
 
-<main>
-
-  <!-- Figure 1: PNG -->
-  <div class="figure-card">
-    <div class="card-header">
-      <span class="card-title">1.png</span>
-      <span class="badge">PNG</span>
-    </div>
-    <div class="card-body img-viewer">
-      <img src="1.png" alt="Figure 1" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <div class="pdf-fallback" style="display:none">
-        <p>Image failed to load.</p>
-        <a href="1.png" download>Download 1.png</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- tau_sensitivity: PDF -->
-  <div class="figure-card">
-    <div class="card-header">
-      <span class="card-title">tau_sensitivity.pdf</span>
-      <span class="badge">PDF</span>
-    </div>
-    <div class="card-body pdf-viewer">
-      <embed src="tau_sensitivity.pdf" type="application/pdf"
-             onerror="this.style.display='none';document.getElementById('pdf-fallback').style.display='block'">
-      <div id="pdf-fallback" class="pdf-fallback">
-        <p>Your browser cannot preview this PDF inline.</p>
-        <a href="tau_sensitivity.pdf" target="_blank">Open PDF ↗</a>
-      </div>
-    </div>
-  </div>
-
+<main id="main">
+  <div class="status" id="status">Loading files…</div>
 </main>
 
-<footer>
-  ICML 2026 Rebuttal · Hosted via GitHub Pages
-</footer>
+<footer>ICML 2026 Rebuttal · Hosted via GitHub Pages</footer>
 
+<script>
+  // ⚙️ 配置
+  const GITHUB_USER = 'icml2026-rebuttal-figures';
+  const GITHUB_REPO = 'figure';
+  const BRANCH = 'main';
+  const SUPPORTED = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'pdf'];
+
+  async function loadFiles() {
+    const main = document.getElementById('main');
+    const status = document.getElementById('status');
+
+    try {
+      const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/git/trees/${BRANCH}?recursive=1`;
+      const res = await fetch(apiUrl);
+      if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+      const data = await res.json();
+
+      const files = data.tree
+        .filter(f => f.type === 'blob')
+        .filter(f => {
+          const ext = f.path.split('.').pop().toLowerCase();
+          return SUPPORTED.includes(ext);
+        })
+        .filter(f => f.path !== 'index.html')
+        .sort((a, b) => a.path.localeCompare(b.path));
+
+      status.remove();
+
+      if (files.length === 0) {
+        main.innerHTML = '<div class="status">No supported files found.</div>';
+        return;
+      }
+
+      files.forEach(file => {
+        const ext = file.path.split('.').pop().toLowerCase();
+        const rawUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/${file.path}`;
+
+        const card = document.createElement('div');
+        card.className = 'figure-card';
+
+        let bodyHtml = '';
+
+        if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext)) {
+          bodyHtml = `
+            <div class="card-body img-viewer">
+              <img src="${rawUrl}" alt="${file.path}">
+            </div>`;
+        } else if (ext === 'svg') {
+          bodyHtml = `
+            <div class="card-body svg-viewer">
+              <img src="${rawUrl}" alt="${file.path}">
+            </div>`;
+        } else if (ext === 'pdf') {
+          bodyHtml = `
+            <div class="card-body pdf-viewer">
+              <embed src="${rawUrl}" type="application/pdf">
+            </div>
+            <div class="fallback">
+              <a href="${rawUrl}" target="_blank">Open PDF ↗</a>
+            </div>`;
+        }
+
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="card-title">${file.path}</span>
+            <span class="badge">${ext.toUpperCase()}</span>
+          </div>
+          ${bodyHtml}
+        `;
+
+        main.appendChild(card);
+      });
+
+    } catch (err) {
+      status.textContent = `Failed to load: ${err.message}`;
+      console.error(err);
+    }
+  }
+
+  loadFiles();
+</script>
 </body>
 </html>
